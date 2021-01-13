@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body class="color">
+
+
+    <div class="h1">
+        <h2>Alex Nascimento Guessing Game </h2>
+    </div>
+    <div class="h5">
+        <h5>O jogo tem 4 fases que vai aumentando a dificuldade a cada fase. Vamos tentar!!!</h5>
+        <h5> Click Start para jogar e entre um numéro entre &nbsp<span class="primeiro">&nbsp</span>1 & &nbsp<span class="Segundo">10.</span>&nbsp <br> Você tem &nbsp <span class="NumeroTentativas">4</span>&nbsp tentativas para acertar. Boa sorte !!!</h5>
+
+        <h5>E click no Enter para checar o resultado</h5>
+        <h5>Você esta na <span class="fases">primeira</span> fase</h5>
+    </div>
+
+
+    <div class="button">
+        <button class="Playgame">Start</button>
+    </div>
+
+    <span class="click" style="display: none;">Você não acertou o numero !!! <br> Tente novamente.</span>
+    <div class="recomecar" style="display: none;">
+        <button class="Sbutton">Recomeçar</button>
+    </div>
+    <div class="tente">
+        <p class="tentenovament">Parabens você acertou, mas você ainda tem mas
+            <span class="SecondFases"></span> fases para continuar click no Start</p>
+        <p class="parabens " style="display: none;">Parabens você completou todas as fases</p>
+        <img src="tenor.gif" alt="" width="140rem" height="150rem">
+
+    </div>
+    <img class="finalgame" src="tenor2.gif" alt="" width="200rem" height="210rem">>
+    <div class="enterNumber">
+        <p class="NumeroA">
+            Entre o Numéro aqui
+        </p> <br> <input id="inputNumber" value="" type="number">
+    </div>
+
+    <div class="EnterCancel">
+        <div>
+            <button id="enter" class="enter">Enter</button>
+        </div>
+        <div>
+            <button id="enter1" class="enter1">Enter</button>
+        </div>
+        <div>
+            <button id="enter2" class="enter2">Enter</button>
+        </div>
+        <div>
+            <button id="enter3" class="enter3">Enter</button>
+        </div>
+        <div>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+    <div>
+        <h4 class="slidein">1 2 3 4 5 6 7 8 9 10</h4>
+
+    </div>
+    <div class="pargraph tentativas">
+        <p>
+            Tentativas &nbsp<span><p class="tenta"></p></span></p>&nbsp
+
+        </p>
+    </div>
+    <br>
+    <div class="pargraph color2">
+        <p>Tente novament com um numéro menor que esse: &nbsp<span><p class="high"></p></span></p>
+    </div>
+    <br>
+    <div class="pargraph color1">
+        <p class="test">Tente novament com um numéro maior que esse: &nbsp <span><p class="low"></p></span></p>
+    </div>
+    <br>
+
+
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
