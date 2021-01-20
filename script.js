@@ -12,7 +12,7 @@ const cancel = document.querySelector('.cancel');
 const color1 = document.querySelector('.color1');
 const color2 = document.querySelector('.color2');
 const acertou = document.querySelector('.acertou');
-const tentativas = document.querySelector('.tenta');
+let tentativas = document.querySelector('.tenta');
 const body = document.querySelector('.color');
 const Amarelo = document.querySelector('.amarelo');
 const primerio = document.querySelector('.primeiro');
@@ -23,9 +23,9 @@ const h5 = document.querySelector('.h5')
 const Fases = document.querySelector('.SecondFases')
 const tentenovament = document.querySelector('.tentenovament').value;
 const fases = document.querySelector('.fases');
-const Parabens = document.querySelector('.parabens')
-const Sbutton = document.querySelector('.Sbutton')
-const finalgame = document.querySelector('.finalgame').style.display = 'none'
+const parabens = document.querySelector('.parabens').style.display = 'none'
+const Sbutton = document.querySelector('.Sbutton');
+const finalgame = document.querySelector('.finalgame').style.display = 'none';
 
 
 function PlaygameHide() {
@@ -34,6 +34,13 @@ function PlaygameHide() {
 
 function PlaygameShow() {
     document.querySelector('.Playgame').style.display = 'block';
+}
+function finalgameHide() {
+    document.querySelector('.finalgame').style.display = 'none';
+}
+
+function finalgameShow() {
+    document.querySelector('.finalgame').style.display = 'block';
 }
 
 
@@ -62,14 +69,6 @@ function windowShow() {
 
 function windowHide() {
     document.querySelector('.tente').style.display = 'none'
-}
-
-function finalHide() {
-    document.querySelector('.finalgame').style.display = 'none'
-}
-
-function finalshow() {
-    document.querySelector('.finalgame').style.display = 'block'
 }
 
 
@@ -101,9 +100,9 @@ const resetFunc = function() {
     low.innerText = '';
     high.innerText = '';
     tentativas.textContent = tentativas.value = ''
-    Playgame.disabled = true;
     low.innerHTML = ''
     high.innerHTML = ''
+    finalgameHide();
     inputNumber.textContent = inputNumber.value = '';
     enter.disabled = false;
     cancel.disabled = false;
@@ -114,7 +113,6 @@ const resetFunc = function() {
     primerio.innerHTML = '';
     clickHide();
     recomecarHide();
-    finalHide()
 
 
 }
@@ -123,7 +121,8 @@ function ramdomNumber() {
     document.body.style.backgroundColor = 'green';
     numbers = Math.floor(Math.random() * 10) + 1;
     console.log(numbers)
-    resetFunc()
+    resetFunc();
+    h5.style.color = 'black'
 
 }
 
@@ -175,29 +174,32 @@ function game() {
     tentar -= 1;
     console.log(ganhador1)
     if (guess === numbers) {
+        windowShow()
         Playgame.disabled = false;
         low.innerHTML = ''
         high.innerHTML = ''
-            // color2.style.backgroundColor = 'rgb(230, 63, 63)';
-            // color1.style.backgroundColor = 'rgb(230, 63, 63)';
+        color2.style.backgroundColor = 'black'
+        color1.style.backgroundColor = 'black';
         inputNumber.textContent = inputNumber.value = '';
         desabilit();
         recomecarHide();
         clickHide();
     } else if (guess < numbers) {
-        // color1.style.backgroundColor = 'red';
-        // color2.style.backgroundColor = 'rgb(230, 63, 63)'
+        color1.style.backgroundColor = 'black';
+        color2.style.backgroundColor = 'black'
         low.innerText = inputNumber.value;
         high.innerText = '';
         inputNumber.value = '';
-        inputNumber.focus()
+        inputNumber.focus();
+        finalgameHide();
     } else if (guess > numbers) {
-        // color2.style.backgroundColor = 'yellow';
-        // color1.style.backgroundColor = 'rgb(230, 63, 63)'
+        color2.style.backgroundColor = 'black'
+        color1.style.backgroundColor = 'black'
         high.innerText = inputNumber.value;
         low.innerText = ''
         inputNumber.value = ''
-        inputNumber.focus()
+        inputNumber.focus();
+        finalgameHide();
 
     }
 
@@ -212,14 +214,14 @@ function allfunction() {
     restallNumbers()
 }
 
-let numberMoves = 4;
+let numberMoves;
 
 function countDown() {
     numberMoves--;
 }
+numberMoves = 4
 FirstGame = () => {
     countDown();
-    tentativas.style.display = 4;
     console.log(ganhador1, 'pri')
     ganhador1++;
     if (ganhador1 === 4 && guess !== numbers) {
@@ -227,18 +229,15 @@ FirstGame = () => {
     } else if (ganhador1 === 4 && guess === numbers) {
         enter.style.display = 'none';
         enter1.style.display = 'block';
-        windowShow()
     } else if (guess === numbers) {
         enter.style.display = 'none';
         enter1.style.display = 'block';
-        windowShow()
-
-
     }
 
 }
-
+numberMoves = 3;
 segundoGame = () => {
+    countDown();
     ganhador2++;
     if (ganhador2 === 3 && guess !== numbers) {
         allfunction();
@@ -247,17 +246,16 @@ segundoGame = () => {
     } else if (ganhador2 === 3 && guess === numbers) {
         enter1.style.display = 'none'
         enter2.style.display = 'block'
-        windowShow()
     } else if (guess === numbers) {
         enter1.style.display = 'none'
         enter2.style.display = 'block'
-        windowShow()
 
     }
 }
 
-
+numberMoves = 2;
 function thirdGame() {
+    countDown();
     ganhador3++;
     if (ganhador3 === 2 && guess !== numbers) {
         allfunction();
@@ -267,18 +265,17 @@ function thirdGame() {
         enter.style.display = 'none'
         enter2.style.display = 'none'
         enter3.style.display = 'block'
-        windowShow()
     } else if (guess === numbers) {
         enter.style.display = 'none'
         enter2.style.display = 'none'
         enter3.style.display = 'block'
-        windowShow()
 
     }
 
 };
-
+numberMoves = 1;
 function quartoGame() {
+    countDown();
     ganhador++;
     if (ganhador === 1 && guess !== numbers) {
         allfunction();
@@ -293,15 +290,17 @@ function quartoGame() {
         enter2.style.display = 'none'
         enter3.style.display = 'none'
         enter.style.color = 'block'
-        finalshow();
-        return h5.style.color = "black"
+        windowHide();
+        finalgameShow();
+        Playgame.disabled = false;
     } else if (guess === numbers) {
         enter1.style.display = 'none'
         enter2.style.display = 'none'
         enter3.style.display = 'none'
         enter.style.display = 'block'
-        h5.style.color = "black"
-        finalshow();
+        windowHide();
+        Playgame.disabled = false;
+        finalgameShow();
     }
 
 }
@@ -316,39 +315,44 @@ enter1.addEventListener('click', function() {
     funfun();
     game();
     segundoGame()
-
+    tentativas.innerHTML = numberMoves;
 
 })
 enter2.addEventListener('click', function() {
     funfun();
     game();
     thirdGame();
-
+    tentativas.innerHTML = numberMoves;
 })
 enter3.addEventListener('click', function() {
     funfun();
     game();
     quartoGame()
-
+    tentativas.innerHTML = numberMoves;
 })
-Sbutton.addEventListener('click', function() {
-    Playgame.disabled = true;
-    finalHide();
-    desabilit();
-    recomecarHide();
-    clickHide();
-    windowHide();
-    recomecarHide();
-    clickHide();
-    ramdomNumber();
-    enter1.style.display === 'none'
 
+Sbutton.addEventListener('click', function() {
+
+        ramdomNumber();
+        color2.style.color = 'white'
+        color1.style.color = 'white'
+        Fases.innerHTML = 3;
+        resetFunc();
+        fases.innerHTML = 'primeira';
+        resetGame++;
+        tentativas.innerHTML = 4;
+        console.log('counter', resetGame)
+        Playgame.disabled = true;
+        windowHide()
+        recomecarHide()
+        clickHide();
+        recomecarHide(); 
+        restallNumbers();
+        h5.style.color = 'black'
 })
 
 function restall() {
     resetGame = 1;
-    ganhador = 0;
-
 }
 
 function restallNumbers() {
@@ -361,27 +365,38 @@ function restallNumbers() {
     numberMoves = 4;
 }
 
+cancel.addEventListener('click', function(){
+    resetGame = 1;
+    enter.disabled = true;
+    enter1.disabled = true;
+    enter2.disabled = true;
+    enter3.disabled = true;
+    Playgame.disabled = false;
+ 
+})
 
 let resetGame = 1;
-const play = Playgame.addEventListener('click', function() {
+
+
+
+
+let play = Playgame.addEventListener('click', function() {
 
     if (resetGame === 1) {
-        finalHide();
+        h5.style.color = 'black'
         ramdomNumber();
         Fases.innerHTML = 3;
         resetFunc();
         fases.innerHTML = 'primeira';
         resetGame++;
         tentativas.innerHTML = 4;
-        console.log('counter', resetGame)
+        console.log('counter', resetGame);
         Playgame.disabled = true;
-        windowHide()
-        recomecarHide()
-        clickHide();
+        windowHide();
         recomecarHide();
         clickHide();
-        clickHide();
         restallNumbers();
+        ganhador = 0;
         ganhador1 = 0;
         ganhador2 = 0;
         ganhador3 = 0;
@@ -391,11 +406,13 @@ const play = Playgame.addEventListener('click', function() {
 
         SecondRandom()
         Fases.innerHTML = 2;
-        fases.innerHTML = 'segunda';
-        Segundo.innerHTML = 20 + '.';
         resetFunc()
-        tentativas.innerHTML = 3;
+        numberMoves = 3;
+        fases.innerHTML = 'segunda';
         resetGame++;
+        tentativas.innerHTML = 3;
+        tentativas;
+        Segundo.innerHTML = 20 + '.';
         console.log('counter', resetGame);
         Playgame.disabled = true;
         windowHide()
@@ -407,32 +424,46 @@ const play = Playgame.addEventListener('click', function() {
         Fases.innerHTML = 1;
         resetFunc();
         resetGame++;
+        numberMoves = 2;
         tentativas.innerHTML = 2;
         Segundo.innerHTML = 30 + '.';
+        fases.innerHTML = 'terceira';
         console.log(resetGame)
         Playgame.disabled = true;
         windowHide()
         recomecarHide()
         clickHide()
+
     } else if (resetGame === 4) {
         fourthRancom();
-        Fases.style.display = 'none';
-        Parabens.innerHTML = 'block';
+        resetFunc();
+        resetGame++;
+        color2.style.color = 'black';
+        color1.style.color = 'black';
+        tentativas.innerHTML = 1;
+        tentativas = 0;
+        Fases.style.display = 'none'
+        finalgame.innerHTML = 'block'
         Segundo.innerHTML = 50 + '.';
         fases.innerHTML = 'quarto';
-        h5.style.color = 'white';
-        resetFunc();
-        tentativas.innerHTML = 1;
-        resetGame++;
-        console.log(resetGame);
+        h5.style.color = 'white'
+        console.log(resetGame)
         Playgame.disabled = true;
         windowHide();
+        PlaygameShow();
         recomecarHide();
-        clickHide();
+        clickHide()
     } else if (resetGame === 5) {
-        windowHide();
-        recomecarHide();
-        clickHide();
-        return ramdomNumber();
+        color2.style.color = 'white'
+        color1.style.color = 'white'
+        windowHide()
+        Playgame.disabled = false;
+        PlaygameShow();
+        tentativas = 0;
+        recomecarHide()
+        clickHide() 
+        Playgame.disabled = true;  
+        return ramdomNumber()
+       
     }
 })
