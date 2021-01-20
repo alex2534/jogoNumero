@@ -131,9 +131,6 @@ function SecondRandom() {
     numbers = Math.floor(Math.random() * 20) + 1;
     console.log(numbers)
     resetFunc();
-
-
-
 }
 
 function ThirdRamdom() {
@@ -151,8 +148,6 @@ function fourthRancom() {
     console.log(numbers)
 
 }
-
-
 
 let tentar;
 
@@ -211,7 +206,7 @@ function allfunction() {
     recomecar();
     restall();
     click();
-    restallNumbers()
+    restallNumbers();
 }
 
 let numberMoves;
@@ -277,14 +272,8 @@ numberMoves = 1;
 function quartoGame() {
     countDown();
     ganhador++;
-    if (ganhador === 1 && guess !== numbers) {
-        allfunction();
-        enter.style.display = 'block'
-        enter1.style.display = 'none'
-        enter2.style.display = 'none'
-        enter3.style.display = 'none'
-
-    } else if (ganhador === 1 && guess === numbers) {
+    if (ganhador === 1 && guess === numbers) {
+        allfunction()
         enter.style.display = 'block'
         enter1.style.display = 'none'
         enter2.style.display = 'none'
@@ -292,8 +281,10 @@ function quartoGame() {
         enter.style.color = 'block'
         windowHide();
         finalgameShow();
+        tentativas.innerHTML = 4;
         Playgame.disabled = false;
     } else if (guess === numbers) {
+        allfunction();
         enter1.style.display = 'none'
         enter2.style.display = 'none'
         enter3.style.display = 'none'
@@ -381,8 +372,9 @@ let resetGame = 1;
 
 
 let play = Playgame.addEventListener('click', function() {
-
+    tentativas.innerHTML = 4;
     if (resetGame === 1) {
+        resetGame = 1;
         h5.style.color = 'black'
         ramdomNumber();
         Fases.innerHTML = 3;
@@ -390,7 +382,6 @@ let play = Playgame.addEventListener('click', function() {
         fases.innerHTML = 'primeira';
         resetGame++;
         tentativas.innerHTML = 4;
-        tentativas = 4;
         console.log('counter', resetGame);
         Playgame.disabled = true;
         windowHide();
@@ -405,20 +396,20 @@ let play = Playgame.addEventListener('click', function() {
 
     } else if (resetGame === 2) {
 
-        SecondRandom();
+        SecondRandom()
         Fases.innerHTML = 2;
-        resetFunc();
+        resetFunc()
         numberMoves = 3;
         fases.innerHTML = 'segunda';
         resetGame++;
         tentativas.innerHTML = 3;
-        tentativas = 3;
+        tentativas;
         Segundo.innerHTML = 20 + '.';
         console.log('counter', resetGame);
         Playgame.disabled = true;
-        windowHide();
-        recomecarHide();
-        clickHide();
+        windowHide()
+        recomecarHide()
+        clickHide()
 
     } else if (resetGame === 3) {
         ThirdRamdom();
@@ -429,11 +420,12 @@ let play = Playgame.addEventListener('click', function() {
         tentativas.innerHTML = 2;
         Segundo.innerHTML = 30 + '.';
         fases.innerHTML = 'terceira';
-        console.log(resetGame);
+        console.log(resetGame)
         Playgame.disabled = true;
-        windowHide();
-        recomecarHide();
-        clickHide();
+        windowHide()
+        recomecarHide()
+        clickHide()
+
 
     } else if (resetGame === 4) {
         fourthRancom();
@@ -442,30 +434,28 @@ let play = Playgame.addEventListener('click', function() {
         color2.style.color = 'black';
         color1.style.color = 'black';
         tentativas.innerHTML = 1;
-        tentativas = 0;
-        Fases.style.display = 'none';
-        finalgame.innerHTML = 'block';
+        Fases.style.display = 'none'
+        finalgame.innerHTML = 'block'
         Segundo.innerHTML = 50 + '.';
         fases.innerHTML = 'quarto';
-        h5.style.color = 'white';
-        console.log(resetGame);
+        h5.style.color = 'white'
+        console.log(resetGame)
         Playgame.disabled = true;
         windowHide();
-        PlaygameShow();
+        PlaygameHide();
         recomecarHide();
-        clickHide();
+        clickHide()
     } else if (resetGame === 5) {
-        color2.style.color = 'white';
-        color1.style.color = 'white';
+        color2.style.color = 'white'
+        color1.style.color = 'white'
         windowHide();
+        tentativas.innerHTML = 4;
         Playgame.disabled = false;
         PlaygameShow();
         tentativas = 0;
-        recomecarHide();
-        clickHide() ;
-        restallNumbers();
-        Playgame.disabled = true;  
-        return ramdomNumber();
+        clickHide() 
+        Playgame.disabled = true; 
+        return ramdomNumber()
        
     }
 })
