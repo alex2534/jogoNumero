@@ -405,9 +405,9 @@ let play = Playgame.addEventListener('click', function() {
 
     } else if (resetGame === 2) {
 
-        SecondRandom()
+        SecondRandom();
         Fases.innerHTML = 2;
-        resetFunc()
+        resetFunc();
         numberMoves = 3;
         fases.innerHTML = 'segunda';
         resetGame++;
@@ -416,9 +416,9 @@ let play = Playgame.addEventListener('click', function() {
         Segundo.innerHTML = 20 + '.';
         console.log('counter', resetGame);
         Playgame.disabled = true;
-        windowHide()
-        recomecarHide()
-        clickHide()
+        windowHide();
+        recomecarHide();
+        clickHide();
 
     } else if (resetGame === 3) {
         ThirdRamdom();
@@ -429,11 +429,11 @@ let play = Playgame.addEventListener('click', function() {
         tentativas.innerHTML = 2;
         Segundo.innerHTML = 30 + '.';
         fases.innerHTML = 'terceira';
-        console.log(resetGame)
+        console.log(resetGame);
         Playgame.disabled = true;
-        windowHide()
-        recomecarHide()
-        clickHide()
+        windowHide();
+        recomecarHide();
+        clickHide();
 
     } else if (resetGame === 4) {
         fourthRancom();
@@ -443,28 +443,29 @@ let play = Playgame.addEventListener('click', function() {
         color1.style.color = 'black';
         tentativas.innerHTML = 1;
         tentativas = 0;
-        Fases.style.display = 'none'
-        finalgame.innerHTML = 'block'
+        Fases.style.display = 'none';
+        finalgame.innerHTML = 'block';
         Segundo.innerHTML = 50 + '.';
         fases.innerHTML = 'quarto';
-        h5.style.color = 'white'
-        console.log(resetGame)
+        h5.style.color = 'white';
+        console.log(resetGame);
         Playgame.disabled = true;
         windowHide();
         PlaygameShow();
         recomecarHide();
-        clickHide()
+        clickHide();
     } else if (resetGame === 5) {
-        color2.style.color = 'white'
-        color1.style.color = 'white'
-        windowHide()
+        color2.style.color = 'white';
+        color1.style.color = 'white';
+        windowHide();
         Playgame.disabled = false;
         PlaygameShow();
         tentativas = 0;
-        recomecarHide()
-        clickHide() 
+        recomecarHide();
+        clickHide() ;
+        restallNumbers();
         Playgame.disabled = true;  
-        return ramdomNumber()
+        return ramdomNumber();
        
     }
 })
