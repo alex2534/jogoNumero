@@ -283,6 +283,7 @@ function quartoGame() {
         finalgameShow();
         tentativas.innerHTML = 4;
         Playgame.disabled = false;
+        recomecarHide();
     } else if (guess === numbers) {
         allfunction();
         enter1.style.display = 'none'
@@ -292,6 +293,10 @@ function quartoGame() {
         windowHide();
         Playgame.disabled = false;
         finalgameShow();
+        recomecarHide();
+    }else if ( numberMoves === 0){
+        allfunction();
+        enter3.disabled = true;
     }
 
 }
@@ -334,8 +339,8 @@ Sbutton.addEventListener('click', function() {
         tentativas.innerHTML = 4;
         console.log('counter', resetGame)
         Playgame.disabled = true;
-        windowHide()
-        recomecarHide()
+        windowHide();
+        recomecarHide();
         clickHide();
         recomecarHide(); 
         restallNumbers();
@@ -377,6 +382,8 @@ let play = Playgame.addEventListener('click', function() {
         resetGame = 1;
         h5.style.color = 'black'
         ramdomNumber();
+        color2.style.color = 'white';
+        color1.style.color = 'white';
         Fases.innerHTML = 3;
         resetFunc();
         fases.innerHTML = 'primeira';
@@ -442,19 +449,16 @@ let play = Playgame.addEventListener('click', function() {
         console.log(resetGame)
         Playgame.disabled = true;
         windowHide();
-        PlaygameHide();
+        clickHide();
         recomecarHide();
-        clickHide()
     } else if (resetGame === 5) {
         color2.style.color = 'white'
         color1.style.color = 'white'
-        windowHide();
+        allfunction();
+        recomecarHide();
         tentativas.innerHTML = 4;
-        Playgame.disabled = false;
-        PlaygameShow();
-        tentativas = 0;
-        clickHide() 
-        Playgame.disabled = true; 
+  
+
         return ramdomNumber()
        
     }
