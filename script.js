@@ -390,6 +390,7 @@ let play = Playgame.addEventListener('click', function() {
         fases.innerHTML = 'primeira';
         resetGame++;
         tentativas.innerHTML = 4;
+        tentativas = 4;
         console.log('counter', resetGame);
         Playgame.disabled = true;
         windowHide();
@@ -411,7 +412,7 @@ let play = Playgame.addEventListener('click', function() {
         fases.innerHTML = 'segunda';
         resetGame++;
         tentativas.innerHTML = 3;
-        tentativas;
+        tentativas = 3;
         Segundo.innerHTML = 20 + '.';
         console.log('counter', resetGame);
         Playgame.disabled = true;
